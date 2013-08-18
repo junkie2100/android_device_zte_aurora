@@ -69,11 +69,11 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-	alsa.msm8960 \
         audio.a2dp.default \
         audio.primary.msm8960 \
         audio_policy.msm8960 \
         libalsa-intf \
+	libaudio \
         libaudioparameter \
         libaudioutils
 
@@ -85,8 +85,8 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/lib/libacdbloader.so:system/lib/libacdbloader.so \
 	$(LOCAL_PATH)/prebuilts/lib/libalsautils.so:system/lib/libalsautils.so \
 	$(LOCAL_PATH)/prebuilts/lib/libaudcal.so:system/lib/libaudcal.so \
-	$(LOCAL_PATH)/prebuilts/lib/libaudioalsa.so:obj/lib/libaudioalsa.so \
-        $(LOCAL_PATH)/prebuilts/lib/hw/alsa.msm8960.so:system/lib/hw/alsa.msm8960.so
+        $(LOCAL_PATH)/prebuilts/lib/hw/alsa.msm8960.so:system/lib/hw/alsa.msm8960.so \
+	$(LOCAL_PATH)/prebuilts/lib/libaudioalsa.so:obj/lib/libaudioalsa.so
 
 # Bluetooth
 #PRODUCT_PACKAGES += \
@@ -196,7 +196,7 @@ PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/prebuilts/usr/keylayout/msm8960-snd-card_Button_Jack.kl:system/usr/keylayout/msm8960-snd-card_Button_Jack.kl \
         $(LOCAL_PATH)/prebuilts/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
         $(LOCAL_PATH)/prebuilts/usr/keylayout/syna-touchscreen.kl:system/usr/keylayout/syna-touchscreen.kl \
-	$(LOCAL_PATH)/prebuilts/usr/idc/Fts-touchscreen.idc:system/usr/idc/Fts-touchscreen.idc
+	$(LOCAL_PATH)/prebuilts/usr/idc/syna-touchscreen.idc:system/usr/idc/syna-touchscreen.idc
 
 # Lights
 PRODUCT_PACKAGES += \
