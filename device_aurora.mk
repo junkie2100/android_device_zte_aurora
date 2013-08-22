@@ -69,24 +69,23 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-        audio.a2dp.default \
-        audio.primary.msm8960 \
-        audio_policy.msm8960 \
-        libalsa-intf \
-	libaudio \
-        libaudioparameter \
-        libaudioutils
+    alsa.msm8960 \
+    audio.a2dp.default \
+    audio_policy.msm8960 \
+    audio.primary.msm8960 \
+    libalsa-intf \
+    libaudioutils
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/prebuilts/lib/libacdbloader.so:obj/lib/libacdbloader.so
+	$(LOCAL_PATH)/prebuilts/lib/libacdbloader.so:obj/lib/libacdbloader.so \
+	$(LOCAL_PATH)/prebuilts/lib/libaudioalsa.so:obj/lib/libaudioalsa.so
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/vendor/etc/audio_policy.conf:system/vendor/etc/audio_policy.conf \
+	$(LOCAL_PATH)/prebuilts/vendor/etc/audio_policy.conf:system/etc/audio_policy.conf \
 	$(LOCAL_PATH)/prebuilts/lib/libacdbloader.so:system/lib/libacdbloader.so \
-	$(LOCAL_PATH)/prebuilts/lib/libalsautils.so:system/lib/libalsautils.so \
 	$(LOCAL_PATH)/prebuilts/lib/libaudcal.so:system/lib/libaudcal.so \
-        $(LOCAL_PATH)/prebuilts/lib/hw/alsa.msm8960.so:system/lib/hw/alsa.msm8960.so \
-	$(LOCAL_PATH)/prebuilts/lib/libaudioalsa.so:obj/lib/libaudioalsa.so
+	$(LOCAL_PATH)/prebuilts/lib/libaudioalsa.so:system/lib/libaudioalsa.so 
 
 # Bluetooth
 #PRODUCT_PACKAGES += \
@@ -242,6 +241,8 @@ PRODUCT_PACKAGES += \
 	libnfc_ndef
 
 # Power
+PRODUCT_PACKAGES += \
+        power.msm8960 
 
 # Qcom
 # init scripts & softap

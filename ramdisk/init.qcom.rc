@@ -101,6 +101,7 @@ on boot
     chmod 2770 /dev/socket/qmux_bluetooth
 
     setprop wifi.interface wlan0
+    setprop ro.radio.noril yes
 
     # Create directories for wiper services
     mkdir /data/wpstiles/ 0775 shell                #ZTE_GPS_LPZ_20111213

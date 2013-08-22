@@ -45,12 +45,13 @@ TARGET_GRALLOC_USES_ASHMEM := true
 ###
 
 # Audio
+#BOARD_USES_INTERVIGILIUM_AUDIO := true
 BOARD_USES_ALSA_AUDIO := true
 #TARGET_QCOM_AUDIO_VARIANT := caf
-TARGET_USES_ION_AUDIO := false
-BOARD_USES_SRS_TRUEMEDIA := true
-BOARD_USES_FLUENCE_INCALL := true
-BOARD_USES_SEPERATED_AUDIO_INPUT := false
+TARGET_USES_ION_AUDIO := true
+#BOARD_USES_SRS_TRUEMEDIA := true
+#BOARD_USES_FLUENCE_INCALL := true
+#BOARD_USES_SEPERATED_AUDIO_INPUT := false
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -92,7 +93,11 @@ WITH_JIT := true
 ENABLE_JSC_JIT := true
 JS_ENGINE := v8
 
+# Lights
+TARGET_PROVIDES_LIBLIGHTS := true
+
 # Power
+TARGET_PROVIDES_POWERHAL := true
 
 # Sensors
 
@@ -125,7 +130,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 
 TARGET_PREBUILT_KERNEL := device/zte/aurora/kernel
 TARGET_KERNEL_SOURCE := kernel/zte/elden
-TARGET_KERNEL_CONFIG := msm8960-hayes_defconfig
+TARGET_KERNEL_CONFIG := aurora_defconfig
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
 # Parttions/filesystem
@@ -163,5 +168,5 @@ ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.debuggable=1
 ADDITIONAL_DEFAULT_PROPERTIES += persist.service.adb.enable=1
 
-TARGET_PROVIDES_RELEASETOOLS := true
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/zte/aurora/releasetools/aurora_ota_from_target_files
+#TARGET_PROVIDES_RELEASETOOLS := false
+#TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/zte/aurora/releasetools/aurora_ota_from_target_files
