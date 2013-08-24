@@ -71,8 +71,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     alsa.msm8960 \
     audio.a2dp.default \
-    audio_policy.msm8960 \
-    audio.primary.msm8960 \
     libalsa-intf \
     libaudioutils
 
@@ -81,6 +79,8 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/lib/libaudioalsa.so:obj/lib/libaudioalsa.so
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilts/lib/hw/audio_policy.msm8960.so:system/lib/hw/audio_policy.msm8960.so \
+    $(LOCAL_PATH)/prebuilts/lib/hw/audio.primary.msm8960.so:system/lib/hw/audio.primary.msm8960.so \
 	$(LOCAL_PATH)/prebuilts/vendor/etc/audio_policy.conf:system/vendor/etc/audio_policy.conf \
 	$(LOCAL_PATH)/prebuilts/vendor/etc/audio_policy.conf:system/etc/audio_policy.conf \
 	$(LOCAL_PATH)/prebuilts/lib/libacdbloader.so:system/lib/libacdbloader.so \
