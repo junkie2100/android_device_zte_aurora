@@ -113,21 +113,17 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/lib/libbtio.so:system/lib/libbtio.so
 
 # Camera
-PRODUCT_PACKAGES += \
-	Camera \
-	libcameraservice \
-	libcamera_client
-
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/prebuilts/lib/liboemcamera.so:obj/lib/liboemcamera.so
-
-PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/prebuilts/lib/liboemcamera.so:obj/lib/liboemcamera.so \
         $(LOCAL_PATH)/prebuilts/bin/mm-qcamera-daemon:system/bin/mm-qcamera-daemon \
-        $(LOCAL_PATH)/prebuilts/bin/mm-qcamera-test:system/bin/mm-qcamera-test \
-        $(LOCAL_PATH)/prebuilts//bin/mm-qcamera-testsuite-client:system/bin/mm-qcamera-testsuite-client \
         $(LOCAL_PATH)/prebuilts/bin/v4l2-qcamera-app:system/bin/v4l2-qcamera-app \
         $(LOCAL_PATH)/prebuilts/lib/liboemcamera.so:system/lib/liboemcamera.so \
-	$(LOCAL_PATH)/prebuilts/lib/hw/camera.msm8960.so:system/lib/hw/camera.msm8960.so
+        $(LOCAL_PATH)/prebuilts/lib/libcamera_client.so:system/lib/libcamera_client.so \
+        $(LOCAL_PATH)/prebuilts/lib/hw/lights.goldfish.so:system/lib/hw/lights.goldfish.so \
+        $(LOCAL_PATH)/prebuilts/etc/audio_effects.conf:system/etc/audio_effects.conf \
+        $(LOCAL_PATH)/prebuilts/lib/hw/camera.msm8960.so:system/lib/hw/camera.msm8960.so \
+        $(LOCAL_PATH)/prebuilts/lib/hw/camera.goldfish.so:system/lib/hw/camera.goldfish.so \
+        $(LOCAL_PATH)/prebuilts/lib/hw/lights.msm8960.so:system/lib/hw/lights.msm8960.so
 
 # Display Firmware
 PRODUCT_COPY_FILES += \

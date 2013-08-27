@@ -9,12 +9,18 @@ on early-init
     mkdir /mnt 0775 root system
 
     mkdir /mnt/sdcard 0000 system system
-    mkdir /mnt/sdcard2 0000 system system
+    #mkdir /mnt/sdcard2 0000 system system
+    # we will remap this as /mnt/sdcard2 with the sdcard fuse tool
+    mkdir /data/media 0775 media_rw media_rw
+    chown media_rw media_rw /data/media
+    mkdir /mnt/sdcard2 0775 media_rw media_rw
+    chown media_rw media_rw /mnt/sdcard2
     mkdir /carrier 0770 system system
 
     # for backwards compatibility
     symlink /mnt/sdcard /sdcard
-    symlink /mnt/sdcard2 /Device
+    symlink /data/media /Device
+    symlink /data/media /mnt/sdcard2
 
 on init
     mount debugfs /sys/kernel/debug /sys/kernel/debug
@@ -614,7 +620,7 @@ service proximity_init /system/bin/proximity.init -r
 on property:dev.bootcomplete=1
     start proximity_init 
 
-service sdcard /system/bin/sdcard /data/media 1023 1023
+service sdcard /system/bin/sdcard /data/media /mnt/sdcard2 1023 1023
     class late_start
 
 service config_sysctl /system/bin/sh /system/etc/init.sysctl.sh
@@ -675,4 +681,11 @@ service hibernate /system/bin/hibernate
     class late_start 
     disabled
     oneshot
+
+service qcamerasvr /system/bin/mm-qcamera-daemon
+class late_start
+# user camera
+# group camera system inet input graphics
+user media
+group system camera inet input graphics
 
