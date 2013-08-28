@@ -266,11 +266,11 @@ PRODUCT_COPY_FILES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
+	hostapd \
+	hostapd_cli \
 	libwpa_client \
 	wpa_cli \
-	wpa_supplicant \
-	hostapd \
-	hostapd_cli
+	wpa_supplicant
 
 PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/prebuilts/bin/wiperiface_v02:system/bin/wiperiface_v02 \
