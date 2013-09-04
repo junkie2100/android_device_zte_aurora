@@ -1,9 +1,6 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product, build/target/product/full.mk)
 
 $(call inherit-product-if-exists, vendor/zte/aurora/aurora-vendor.mk)
 
@@ -57,15 +54,17 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
 	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
 	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
 	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
 # APN
+#PRODUCT_COPY_FILES += \
+#	$(LOCAL_PATH)/prebuilts/etc/apns-conf.xml:system/vendor/etc/apns-conf.xml
+
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/prebuilts/etc/apns-conf.xml:system/etc/apns-conf.xml	
+	$(LOCAL_PATH)/prebuilts/etc/apns-conf.xml:system/etc/apns-conf.xml
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -92,25 +91,12 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/bin/bluetoothd:system/bin/bluetoothd \
-	$(LOCAL_PATH)/prebuilts/bin/bt_ssp_debug_mode.sh:system/bin/bt_ssp_debug_mode.sh \
-	$(LOCAL_PATH)/prebuilts/bin/bt_testmode.sh:system/bin/bt_testmode.sh \
-	$(LOCAL_PATH)/prebuilts/bin/bt_testmode_new.sh:system/bin/bt_testmode_new.sh \
 	$(LOCAL_PATH)/prebuilts/bin/btnvtool:system/bin/btnvtool \
  	$(LOCAL_PATH)/prebuilts/bin/hciattach:system/bin/hciattach \
 	$(LOCAL_PATH)/prebuilts/bin/hci_qcomm_init:system/bin/hci_qcomm_init \
  	$(LOCAL_PATH)/prebuilts/bin/hciconfig:system/bin/hciconfig \
 	$(LOCAL_PATH)/prebuilts/bin/hcitool:system/bin/hcitool \
-	$(LOCAL_PATH)/prebuilts/bin/init.btprop.sh:system/bin/init.btprop.sh \
-	$(LOCAL_PATH)/prebuilts/etc/bluetooth/audio.conf:system/etc/bluetooth/audio.conf \
-	$(LOCAL_PATH)/prebuilts/etc/bluetooth/auto_pairing.conf:system/etc/bluetooth/auto_pairing.conf \
-	$(LOCAL_PATH)/prebuilts/etc/bluetooth/blacklist.conf:system/etc/bluetooth/blacklist.conf \
-	$(LOCAL_PATH)/prebuilts/etc/bluetooth/input.conf:system/etc/bluetooth/input.conf \
-	$(LOCAL_PATH)/prebuilts/etc/bluetooth/main.conf:system/etc/bluetooth/main.conf \
-	$(LOCAL_PATH)/prebuilts/etc/bluetooth/network.conf:system/etc/bluetooth/network.conf \
-	$(LOCAL_PATH)/prebuilts/lib/libbluedroid.so:system/lib/libbluedroid.so \
-	$(LOCAL_PATH)/prebuilts/lib/libbluetooth.so:system/lib/libbluetooth.so \
-	$(LOCAL_PATH)/prebuilts/lib/libbluetoothd.so:system/lib/libbluetoothd.so \
-	$(LOCAL_PATH)/prebuilts/lib/libbtio.so:system/lib/libbtio.so
+	$(LOCAL_PATH)/prebuilts/bin/init.btprop.sh:system/bin/init.btprop.sh
 
 # Camera
 PRODUCT_COPY_FILES += \
@@ -164,17 +150,17 @@ PRODUCT_PACKAGES += \
         setup_fs
 
 #GPS
-PRODUCT_PACKAGES += \
-        gps.default \
-        libgps.utils \
-        libloc_adapter \
-        libloc_eng
-
 PRODUCT_COPY_FILES += \
+        $(LOCAL_PATH)/prebuilts/bin/quipc_igsn:system/bin/quipc_igsn \
+        $(LOCAL_PATH)/prebuilts/bin/quipc_main:system/bin/quipc_main \
+        $(LOCAL_PATH)/prebuilts/bin/gsiff_daemon:system/bin/gsiff_daemon \
         $(LOCAL_PATH)/prebuilts/etc/gps.conf:system/etc/gps.conf \
         $(LOCAL_PATH)/prebuilts/lib/libgps.so:system/lib/libgps.so \
         $(LOCAL_PATH)/prebuilts/lib/libloc_api_v02.so:system/lib/libloc_api_v02.so \
-        $(LOCAL_PATH)/prebuilts/lib/libloc_ext.so:system/lib/libloc_ext.so
+        $(LOCAL_PATH)/prebuilts/lib/hw/gps.default.so:system/lib/hw/gps.default.so \
+        $(LOCAL_PATH)/prebuilts/lib/libloc_ext.so:system/lib/libloc_ext.so \
+        $(LOCAL_PATH)/prebuilts/lib/libgps.utils.so:system/lib/libgps.utils.so \
+        $(LOCAL_PATH)/prebuilts/lib/libloc_eng.so:system/lib/libloc_eng.so
 
 # HDMI
 PRODUCT_COPY_FILES += \
@@ -290,11 +276,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.execution-mode=int:jit \
 	dalvik.vm.dexopt-flags=m=y \
-        dalvik.vm.dexopt-data-only=1
+        dalvik.vm.dexopt-data-only=1 \
+	ro.config.qc_lte_network_modes=true
 
 #RADIO
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilts/app/Stk.apk:system/app/Stk.apk
+
+# The gps config appropriate for this device
+$(call inherit-product, device/common/gps/gps_us_supl.mk)
+
+$(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_aurora

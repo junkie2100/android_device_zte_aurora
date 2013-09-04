@@ -74,32 +74,22 @@
          USB interfaces.  If the device doesn't want to support tething over USB this should
          be empty.  An example would be "usb.*" -->
     <string-array translatable="false" name="config_tether_usb_regexs">
-        <item>"rndis0"</item>
+        <item>usb\\d</item>
+        <item>rndis\\d</item>
     </string-array>
-
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          Wifi interfaces.  If the device doesn't want to support tethering over Wifi this
          should be empty.  An example would be "softap.*" -->
     <string-array translatable="false" name="config_tether_wifi_regexs">
-        <item>"wlan0"</item>
+        <item>wlan0</item>
     </string-array>
 
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          bluetooth interfaces.  If the device doesn't want to support tethering over bluetooth this
          should be empty. -->
     <string-array translatable="false" name="config_tether_bluetooth_regexs">
-        <item>"bt-pan"</item>
+        <item>bnep\\d</item>
     </string-array>
-
-    <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->
-    <!-- Common options are [1, 4] for TYPE_WIFI and TYPE_MOBILE_DUN or
-    <!== [0,1,5,7] for TYPE_MOBILE, TYPE_WIFI, TYPE_MOBILE_HIPRI and TYPE_BLUETOOTH -->
-    <integer-array translatable="false" name="config_tether_upstream_types">
-        <item>0</item>
-        <item>1</item>
-        <item>5</item>
-        <item>7</item>
-    </integer-array>
 
     <!-- Boolean indicating whether Softap requires reloading AP firmware -->
     <bool name="config_wifiApFirmwareReload">false</bool>
@@ -189,12 +179,12 @@
          The brightness values must be between 0 and 255 and be non-decreasing.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessButtonBacklightValues">
-        <item>5</item>
-        <item>5</item>
-        <item>5</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
+        <item>10</item>
+        <item>30</item>
+        <item>50</item>
+        <item>100</item>
+        <item>175</item>
+        <item>255</item>
     </integer-array>
 
     <!-- Array of output values for keyboard backlight corresponding to the LUX values
@@ -203,12 +193,12 @@
          The brightness values must be between 0 and 255 and be non-decreasing.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessKeyboardBacklightValues">
-        <item>5</item>
-        <item>5</item>
-        <item>5</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
+        <item>10</item>
+        <item>30</item>
+        <item>50</item>
+        <item>100</item>
+        <item>175</item>
+        <item>255</item>
     </integer-array>
 
     <!-- Boolean indicating if restoring network selection should be skipped -->
