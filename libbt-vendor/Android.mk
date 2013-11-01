@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see [http://www.gnu.org/licenses/].
 #
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME), arthur)
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME), aurora)
 BDROID_DIR:= external/bluetooth/bluedroid
 
 LOCAL_PATH := $(call my-dir)
