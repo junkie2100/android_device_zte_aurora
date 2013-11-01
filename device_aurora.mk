@@ -295,6 +295,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.dexopt-flags=m=y \
         dalvik.vm.dexopt-data-only=1
 
+# Bluetooth
+PRODUCT_PROPERTY_OVERRIDES += \
+  ro.bt.bdaddr_path=/data/misc/bluedroid/bdaddr \
+  qcom.bt.dev_power_class=2 \
+  ro.qualcomm.bluetooth.sap=false \
+  ro.qualcomm.bluetooth.ftp=true \
+  ro.bluetooth.hfp.ver=1.5 \
+  ro.qualcomm.bt.hci_transport=smd \
+  ro.bluetooth.request.master=true \
+  ro.bluetooth.remote.autoconnect=true
+  
+  
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_aurora
 PRODUCT_DEVICE := aurora

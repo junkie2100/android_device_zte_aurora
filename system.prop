@@ -78,32 +78,8 @@ persist.audio.handset.mic=analog
 # 131072 is decimal for 0x20000 to report version 2
 ro.opengles.version=131072
 
-#
-# system prop for Bluetooth SAP Profile
-#
-ro.qualcomm.bluetooth.sap=false
-
-# system prop for Bluetooth FTP profile
-ro.qualcomm.bluetooth.ftp=true
-#
-# system property for Bluetooth Handsfree Profile version
-#
-ro.bluetooth.hfp.ver=1.5
-#
-#system prop for Bluetooth hci transport
-ro.qualcomm.bt.hci_transport=smd
-#
-# system prop for requesting Master role in incoming Bluetooth connection.
-#
-ro.bluetooth.request.master=true
-#
-# system prop for Bluetooth Auto connect for remote initated connections
-#
-ro.bluetooth.remote.autoconnect=true
-
 #system prop for switching gps driver to qmi
 persist.gps.qmienabled=true
-
 
 # Fix issue of tunning LCD backlight by web browser
 power.webview.DM=false

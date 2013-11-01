@@ -17,7 +17,6 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "ZTE N9100"
-#define BTA_DISABLE_DELAY 1000 /* in milliseconds */
+#define BTM_DEF_LOCAL_NAME        "ZTE Force 4G"
 
 #endif
