@@ -18,5 +18,6 @@
 #define _BDROID_BUILDCFG_H
 
 #define BTM_DEF_LOCAL_NAME        "ZTE Force 4G"
+#define BTA_DISABLE_DELAY 1000 /* in milliseconds */
 
 #endif
